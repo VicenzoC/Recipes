@@ -4,4 +4,15 @@
     <string name="unlimited_recipes">RECEITAS PREMIUM ILIMITADAS</string>
     <string name="button_login">Entrar</string>
     <string name="button_signup">Registrar-se</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="create_account">Create a new account</string>
+    <string name="camera_icon">Camera icon</string>
+    <string name="user_image">User image</string>
+    <string name="your_name">Your name</string>
+    <string name="person_icon">Person icon</string>
+    <string name="your_e_mail">Your e-mail</string>
+    <string name="mail_icon">Mail icon</string>
+    <string name="your_password">Your password</string>
+    <string name="lock_icon">Lock icon</string>
+    <string name="remove_red_eye_icon">Remove red eye icon</string>
 </resources>
