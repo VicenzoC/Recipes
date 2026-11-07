@@ -53,4 +53,7 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
 
     implementation("androidx.compose.material:material-icons-extended-android:1.7.8")
+
+    implementation(libs.androidx.navigation.compose)
+    //implementation(libs.kotlinx.serialization.json)
 }

@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,18 +25,23 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import br.com.fiap.recipes.R
+import br.com.fiap.recipes.navigation.Destination
 import br.com.fiap.recipes.ui.theme.RecipesTheme
 
 @Composable
-fun SignUpScreen(modifier: Modifier = Modifier) {
+fun SignUpScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -52,7 +58,7 @@ fun SignUpScreen(modifier: Modifier = Modifier) {
             TitleComponent()
             Spacer(modifier = Modifier.height(48.dp))
             UserImage()
-            SignUpUserForm()
+            SignUpUserForm(navController)
         }
     }
 }
@@ -61,7 +67,7 @@ fun SignUpScreen(modifier: Modifier = Modifier) {
 @Composable
 private fun SignUpScreenPreview() {
     RecipesTheme {
-        SignUpScreen()
+        SignUpScreen(rememberNavController())
     }
 }
 
@@ -124,7 +130,7 @@ private fun UserImagePreview() {
 }
 
 @Composable
-fun SignUpUserForm(modifier: Modifier = Modifier) {
+fun SignUpUserForm(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -218,6 +224,29 @@ fun SignUpUserForm(modifier: Modifier = Modifier) {
                 style = MaterialTheme.typography.labelMedium
             )
         }
+        Spacer(modifier = Modifier.height(32.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.End
+        ){
+            Text(
+                text = stringResource(R.string.already_have_an_account),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.primary
+            )
+            TextButton(
+                onClick = {
+                    navController.navigate(Destination.LoginScreen.route)
+                }
+            ) {
+                Text(
+                    text = stringResource(R.string.login),
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
     }
 }
 
@@ -225,7 +254,7 @@ fun SignUpUserForm(modifier: Modifier = Modifier) {
 @Composable
 private fun SignUpUserFormPreview() {
     RecipesTheme() {
-        SignUpUserForm()
+        SignUpUserForm(rememberNavController())
     }
     
 }
